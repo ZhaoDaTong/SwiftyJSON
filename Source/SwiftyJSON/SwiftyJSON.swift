@@ -447,7 +447,9 @@ extension JSON {
 	 */
     public subscript(path: [JSONSubscriptType]) -> JSON {
         get {
-            return path.reduce(self) { $0[sub: $1] }
+            return path.reduce(self) {
+                $0[sub: $1]
+            }
         }
         set {
             switch path.count {

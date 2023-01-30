@@ -243,7 +243,12 @@ class SubscriptTests: XCTestCase {
 
     func testMultilevelSetter2() {
         var json: JSON = ["user": ["id": 987654, "info": ["name": "jack", "email": "jack@gmail.com"], "feeds": [98833, 23443, 213239, 23232]]]
+//        print(json["user", "info", "name"])
+//        print(json["user"]["info"]["name"])
+//        json["user"] = "jim"
         json["user", "info", "name"] = "jim"
+        json["user"]["info"]["name"] = "jim"
+        XCTAssertEqual(json["user", "info", "name"], json["user"]["info"]["name"])
         XCTAssertEqual(json["user", "id"], 987654)
         XCTAssertEqual(json["user", "info", "name"], "jim")
         XCTAssertEqual(json["user", "info", "email"], "jack@gmail.com")
